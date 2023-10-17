@@ -2,7 +2,7 @@
 
 Group project
 by 
-Tania Makodi 
+Tania Makodi and Muritala Mudi
 
 Requirements
 General
