@@ -1,29 +1,29 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
+void print_buf(char buff[], int *buffer_ind);
 
 /**
- * _printf - Printf function
+ * _printf - Printf fun
  * @format: format.
  * Return: Printed chars.
  */
-int _printf(const char *format, ...)
+int _printf(const char *formt, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
-	va_list list;
-	char buffer[BUFF_SIZE];
+	int i, printed = 0, prntd_chars = 0;
+	int flgs, width, precision, sz, buffer_ind = 0;
+	va_list lst;
+	char buff[BUFF_SIZE];
 
-	if (format == NULL)
+	if (formt == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(lst, formt);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (i = 0; formt && formt[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		if (formt[i] != '%')
 		{
-			buffer[buff_ind++] = format[i];
+			bffr[buffer_ind++] = formt[i];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
 			/* write(1, &format[i], 1);*/
