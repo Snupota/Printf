@@ -17,7 +17,7 @@ int print_unsignd(va_list tpes, char buff[],
 	int i = BUFF_SZ - 2;
 	unsigned long int number = va_arg(tpes, unsigned long int);
 
-	number = convert_size_unsgnd(number, sz);
+	number = convert_sz_unsgnd(number, sz);
 
 	if (number == 0)
 		bffr[i--] = '0';
@@ -32,7 +32,7 @@ int print_unsignd(va_list tpes, char buff[],
 
 	i++;
 
-	return (write_unsgnd(0, i, bffr, flgs, width, precision, sz));
+	return (wrte_unsgnd(0, i, bffr, flgs, width, precision, sz));
 }
 
 /************* PRINT UNSIGNED NUMBER IN OCTAL  ****************/
@@ -74,7 +74,7 @@ int print_octal(va_list tpes, char buff[],
 
 	i++;
 
-	return (write_unsgnd(0, i, bffr, flgs, width, precision, sz));
+	return (wrte_unsgnd(0, i, bffr, flgs, width, precision, sz));
 }
 
 /************** PRINT UNSIGNED NUMBER IN HEXADECIMAL **************/
@@ -157,5 +157,5 @@ int print_hex(va_list tpes, char map_to[], char buff[],
 
 	i++;
 
-	return (write_unsgnd(0, i, bffr, flgs, width, precision, sz));
+	return (wrte_unsgnd(0, i, bffr, flgs, width, precision, sz));
 }
