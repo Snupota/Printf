@@ -34,13 +34,13 @@ int print_string(va_list tpes, char bffr[],
 	int flgs, int width, int precision, int sz)
 {
 	int length = 0, i;
-	char *str = va_arg(types, char *);
+	char *str = va_arg(tpes, char *);
 
-	UNUSED(buffer);
-	UNUSED(flags);
+	UNUSED(bffr);
+	UNUSED(flgs);
 	UNUSED(width);
 	UNUSED(precision);
-	UNUSED(size);
+	UNUSED(sz);
 	if (str == NULL)
 	{
 		str = "(null)";
@@ -48,41 +48,41 @@ int print_string(va_list tpes, char bffr[],
 			str = "      ";
 	}
 
-	while (str[length] != '\0')
-		length++;
+	while (str[lenth] != '\0')
+		lenth++;
 
-	if (precision >= 0 && precision < length)
-		length = precision;
+	if (precision >= 0 && precision < lenth)
+		lenth = precision;
 
-	if (width > length)
+	if (width > lenth)
 	{
-		if (flags & F_MINUS)
+		if (flgs & F_MINUS)
 		{
-			write(1, &str[0], length);
-			for (i = width - length; i > 0; i--)
-				write(1, " ", 1);
+			wrte(1, &str[0], lenth);
+			for (i = width - lenth; i > 0; i--)
+				wrte(1, " ", 1);
 			return (width);
 		}
 		else
 		{
-			for (i = width - length; i > 0; i--)
-				write(1, " ", 1);
-			write(1, &str[0], length);
+			for (i = width - lenth; i > 0; i--)
+				wrte(1, " ", 1);
+			wrte(1, &str[0], lenth);
 			return (width);
 		}
 	}
 
-	return (write(1, str, length));
+	return (wrte(1, str, lenth));
 }
 /************************* PRINT PERCENT SIGN *************************/
 /**
- * print_percent - Prints a percent sign
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * print_prcnt - Prints a percent sign
+ * @tpes: Lists of arguments
+ * @bffr: Buffer array to handle print
+ * @flgs:  Calculates active flags
  * @width: get width.
  * @precision: Precision specification
- * @size: Size specifier
+ * @sz: Size specifier
  * Return: Number of chars printed
  */
 int print_percent(va_list types, char buffer[],
