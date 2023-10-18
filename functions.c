@@ -4,34 +4,34 @@
 
 /**
  * print_char - Prints a char
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * @tpes: List a of arguments
+ * @bffr: Buffer array to handle print
+ * @flgs:  Calculates active flags
  * @width: Width
  * @precision: Precision specification
- * @size: Size specifier
+ * @sz: Size specifier
  * Return: Number of chars printed
  */
-int print_char(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_char(va_list tpes, char bffr[],
+	int flgs, int width, int precision, int sz)
 {
-	char c = va_arg(types, int);
+	char c = va_arg(tpes, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (handle_wrte_char(c, bffr, flgs, width, precision, sz));
 }
 /************************* PRINT A STRING *************************/
 /**
  * print_string - Prints a string
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * @tpes: List a of arguments
+ * @bffr: Buffer array to handle print
+ * @flgs:  Calculates active flags
  * @width: get width.
  * @precision: Precision specification
- * @size: Size specifier
+ * @sz: Size specifier
  * Return: Number of chars printed
  */
-int print_string(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_string(va_list tpes, char bffr[],
+	int flgs, int width, int precision, int sz)
 {
 	int length = 0, i;
 	char *str = va_arg(types, char *);
