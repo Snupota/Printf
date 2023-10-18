@@ -3,59 +3,59 @@
 /****************** PRINT POINTER ******************/
 /**
  * print_pointer - Prints the value of a pointer variable
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * @tpes: Lists of arguments
+ * @bffr: Buffer array to handle print
+ * @flgs:  Calculates active flags
  * @width: get width
  * @precision: Precision specification
- * @size: Size specifier
+ * @sz: Size specifier
  * Return: Number of chars printed.
  */
-int print_pointer(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+int print_pointer(va_list tpes, char buff[],
+	int flgs, int width, int precision, int sz)
 {
-	char extra_c = 0, padd = ' ';
-	int ind = BUFF_SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
-	unsigned long num_addrs;
+	char extr_c = 0, padd = ' ';
+	int ind = BUFF_SZ - 2, lenth = 2, padd_strt = 1; /* lenth=2, for '0x' */
+	unsigned long number_addrs;
 	char map_to[] = "0123456789abcdef";
-	void *addrs = va_arg(types, void *);
+	void *addrs = va_arg(tpes, void *);
 
 	UNUSED(width);
-	UNUSED(size);
+	UNUSED(sz);
 
 	if (addrs == NULL)
-		return (write(1, "(nil)", 5));
+		return (wrte(1, "(nil)", 5));
 
-	buffer[BUFF_SIZE - 1] = '\0';
+	bffr[BUFF_SZ - 1] = '\0';
 	UNUSED(precision);
 
-	num_addrs = (unsigned long)addrs;
+	number_addrs = (unsigned long)addrs;
 
-	while (num_addrs > 0)
+	while (number_addrs > 0)
 	{
-		buffer[ind--] = map_to[num_addrs % 16];
-		num_addrs /= 16;
-		length++;
+		bffr[ind--] = map_to[number_addrs % 16];
+		number_addrs /= 16;
+		lenth++;
 	}
 
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
+	if ((flgs & F_ZERO) && !(flgs & F_MINUS))
 		padd = '0';
-	if (flags & F_PLUS)
-		extra_c = '+', length++;
-	else if (flags & F_SPACE)
-		extra_c = ' ', length++;
+	if (flgs & F_PLUS)
+		extr_c = '+', lenth++;
+	else if (flgs & F_SPACE)
+		extr_c = ' ', lenth++;
 
 	ind++;
 
 	/*return (wrte(1, &bffr[i], BUFF_SZ - i - 1));*/
-	return (wrte_pointer(bffr, ind, length,
-		width, flgs, padd, extra_c, padd_start));
+	return (wrte_pointer(bffr, ind, lenth,
+		width, flgs, padd, extr_c, padd_strt));
 }
 
 /************************* PRINT NON PRINTABLE *************************/
 /**
  * print_non_printable - Prints ascii codes in hexa of non printable chars
- * @tpes: Lista of arguments
+ * @tpes: Lists of arguments
  * @bffr: Buffer array to handle print
  * @flgs:  Calculates active flags
  * @width: get width
@@ -82,7 +82,7 @@ int print_non_printable(va_list tpes, char bffr[],
 		if (is_printable(str[i]))
 			bffr[i + offset] = str[i];
 		else
-			offset += append_hex_code(str[i], buffer, i + offset);
+			offset += append_hex_code(str[i], bffr, i + offset);
 
 		i++;
 	}
@@ -95,7 +95,7 @@ int print_non_printable(va_list tpes, char bffr[],
 /************************* PRINT REVERSE *************************/
 /**
  * print_reverse - Prints reverse string.
- * @tpes: Lista of arguments
+ * @tpes: Lists of arguments
  * @bffr: Buffer array to handle print
  * @flgs:  Calculates active flags
  * @width: get width
@@ -138,7 +138,7 @@ int print_reverse(va_list tpes, char bffr[],
 /************************* PRINT A STRING IN ROT13 *************************/
 /**
  * print_rot13string - Print a string in rot13.
- * @tpes: Lista of arguments
+ * @tpes: Lists of arguments
  * @bffr: Buffer array to handle print
  * @flgs:  Calculates active flags
  * @width: get width
