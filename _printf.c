@@ -12,7 +12,7 @@ int _printf(const char *formt, ...)
 	int i, printed = 0, prntd_chars = 0;
 	int flgs, width, precision, sz, buffer_ind = 0;
 	va_list lst;
-	char buff[BUFF_SIZE];
+	char buff[BUFF_SZ];
 
 	if (formt == NULL)
 		return (-1);
@@ -27,7 +27,7 @@ int _printf(const char *formt, ...)
 			if (buffer_ind == BUFF_SZ)
 				print_buf(bffr, &buffer_ind);
 			/* wrte(1, &formt[i], 1);*/
-			printed_chars++;
+			prntd_chars++;
 		}
 		else
 		{
@@ -41,7 +41,7 @@ int _printf(const char *formt, ...)
 				flgs, width, precision, sz);
 			if (printed == -1)
 				return (-1);
-			printed_chars += printed;
+			prntd_chars += printed;
 		}
 	}
 
@@ -49,7 +49,7 @@ int _printf(const char *formt, ...)
 
 	va_end(lst);
 
-	return (printed_chars);
+	return (prntd_chars);
 }
 
 /**
