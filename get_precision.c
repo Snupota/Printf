@@ -1,34 +1,34 @@
 #include "main.h"
 
 /**
- * get_precson - Calculates the precision for printing
- * @formt: Formatted string in which to print the arguments
+ * get_precision - Calculates the precision for printing
+ * @format: Formatted string in which to print the arguments
  * @i: List of arguments to be printed.
- * @lst: list of arguments.
+ * @list: list of arguments.
  *
- * Return: Precson.
+ * Return: Precision.
  */
-int get_precson(const char *formt, int *i, va_list lst)
+int get_precision(const char *format, int *i, va_list list)
 {
 	int curr_i = *i + 1;
-	int precson = -1;
+	int precision = -1;
 
-	if (formt[curr_i] != '.')
-		return (precson);
+	if (format[curr_i] != '.')
+		return (precision);
 
-	precson = 0;
+	precision = 0;
 
-	for (curr_i += 1; formt[curr_i] != '\0'; curr_i++)
+	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
 	{
-		if (is_digit(formt[curr_i]))
+		if (is_digit(format[curr_i]))
 		{
-			precson *= 10;
-			precson += formt[curr_i] - '0';
+			precision *= 10;
+			precision += format[curr_i] - '0';
 		}
-		else if (formt[curr_i] == '*')
+		else if (format[curr_i] == '*')
 		{
 			curr_i++;
-			precson = va_arg(lst, int);
+			precision = va_arg(list, int);
 			break;
 		}
 		else
@@ -37,6 +37,6 @@ int get_precson(const char *formt, int *i, va_list lst)
 
 	*i = curr_i - 1;
 
-	return (precson);
+	return (precision);
 }
 
