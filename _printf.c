@@ -10,7 +10,7 @@ void print_buf(char buff[], int *buffer_ind);
 int _printf(const char *formt, ...)
 {
 	int i, printed = 0, prntd_chars = 0;
-	int flgs, width, precision, sz, buffer_ind = 0;
+	int flgs, width, precson, sz, buffer_ind = 0;
 	va_list lst;
 	char buff[BUFF_SZ];
 
@@ -34,11 +34,11 @@ int _printf(const char *formt, ...)
 			print_buf(bffr, &buffer_ind);
 			flgs = get_flgs(formt, &i);
 			width = get_width(formt, &i, lst);
-			precision = get_precision(formt, &i, lst);
+			precson = get_precson(formt, &i, lst);
 			sz = get_sz(formt, &i);
 			++i;
 			printed = handle_print(formt, &i, lst, bffr,
-				flgs, width, precision, sz);
+				flgs, width, precson, sz);
 			if (printed == -1)
 				return (-1);
 			prntd_chars += printed;
