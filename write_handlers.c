@@ -99,7 +99,7 @@ int wrte_number(int ind, char buff[],
 
 	if (precson == 0 && ind == BUFF_SZ - 2 && bffr[ind] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
-	if (precs0n == 0 && ind == BUFF_SZ - 2 && bffr[ind] == '0')
+	if (precson == 0 && ind == BUFF_SZ - 2 && bffr[ind] == '0')
 		bffr[ind] = padd = ' '; /* width is displayed with padding ' ' */
 	if (precson > 0 && precson < lenth)
 		padd = ' ';
